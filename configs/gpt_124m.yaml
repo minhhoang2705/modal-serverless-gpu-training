@@ -1,0 +1,50 @@
+# GPT-2 Small (124M parameters) configuration
+# Based on the original GPT-2 architecture
+
+model:
+  vocab_size: 50257  # GPT-2 tokenizer vocabulary size
+  context_length: 1024  # Maximum sequence length
+  n_layers: 12  # Number of transformer blocks
+  n_heads: 12  # Number of attention heads
+  d_model: 768  # Hidden dimension size
+  d_ff: 3072  # Feed-forward dimension (4 * d_model)
+  dropout: 0.1  # Dropout probability
+
+training:
+  batch_size: 16  # Per-device batch size
+  gradient_accumulation_steps: 2  # Effective batch size = 32
+  learning_rate: 3e-4  # Peak learning rate
+  warmup_steps: 2000  # Learning rate warmup
+  max_steps: 50000  # Total training steps
+  weight_decay: 0.1  # AdamW weight decay
+  grad_clip: 1.0  # Gradient clipping threshold
+
+  # Optimizer
+  adam_beta1: 0.9
+  adam_beta2: 0.95
+  adam_eps: 1e-8
+
+  # Precision
+  use_amp: true  # Automatic mixed precision (FP16/BF16)
+  dtype: "bfloat16"  # Use bfloat16 if available, else float16
+
+  # Checkpointing
+  checkpoint_every: 1000  # Save checkpoint every N steps
+  eval_every: 500  # Run evaluation every N steps
+  log_every: 10  # Log metrics every N steps
+
+data:
+  dataset: "tinystories"  # or "shakespeare"
+  train_split: "train"
+  val_split: "validation"
+  num_workers: 4  # DataLoader workers
+
+wandb:
+  project: "slm-from-scratch"
+  entity: null  # Your W&B username (or null for default)
+  name: "gpt-124m-tinystories"  # Run name
+  tags: ["gpt", "124m", "tinystories"]
+
+modal:
+  gpu: "A100"  # Cheap GPU for 124M model
+  timeout: 7200  # 2 hours max

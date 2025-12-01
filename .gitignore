@@ -1,0 +1,69 @@
+# Secrets (CRITICAL)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets/
+config.json
+*secret*
+!*secret*.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+*.egg
+*.whl
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Data
+data/
+*.bin
+*.pt
+*.pth
+checkpoints/
+
+# Logs
+logs/
+wandb/
+*.log
+
+# Model outputs
+outputs/
+models/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Modal
+.modal/
+
+# Plans and drafts
+plans/
+*.draft.md
+notes/
+scratch/

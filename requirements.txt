@@ -1,0 +1,24 @@
+# Core dependencies
+torch>=2.1.0
+numpy>=1.24.0
+tqdm>=4.65.0
+
+# Tokenization
+tiktoken>=0.5.0
+
+# Data handling
+datasets>=2.14.0
+
+# Experiment tracking
+wandb>=0.16.0
+
+# Modal cloud deployment
+modal>=0.63.0
+
+# Development tools
+jupyter>=1.0.0
+matplotlib>=3.7.0
+pytest>=7.4.0
+
+# Optional: for better performance
+# flash-attn>=2.5.0  # Uncomment if you want FlashAttention (requires CUDA)
